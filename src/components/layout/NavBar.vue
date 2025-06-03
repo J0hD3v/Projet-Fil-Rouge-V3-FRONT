@@ -28,8 +28,8 @@
                             </RouterLink>
                         </li>
                         <li class="nav-item me-2 py-2">
-                            <RouterLink to="/about" class="text-dark text-decoration-none">
-                                About
+                            <RouterLink to="/gallery" class="text-dark text-decoration-none">
+                                Gallery
                             </RouterLink>
                         </li>
                         <li class="nav-item dropdown">
@@ -46,6 +46,11 @@
                                 <li class="dropdown-item me-2">
                                     <RouterLink to="/users" class="text-dark text-decoration-none">
                                         Users
+                                    </RouterLink>
+                                </li>
+                                <li class="nav-item me-2 py-2">
+                                    <RouterLink to="/about" class="text-dark text-decoration-none">
+                                        About
                                     </RouterLink>
                                 </li>
                                 <li class="dropdown-item me-2">

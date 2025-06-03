@@ -7,9 +7,9 @@
 
 <template>
     <Header />
-    <!-- <NavBar /> -->
+    <NavBar />
     <RouterView />
-    <!-- <Footer /> -->
+    <Footer />
 </template>
 
 <style scoped>

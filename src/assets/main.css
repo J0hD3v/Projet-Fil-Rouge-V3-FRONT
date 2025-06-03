@@ -6,8 +6,8 @@
   margin: 0 auto;
   /* padding: 2rem; */
   font-weight: normal;
-  background-color: yellow;
-  /* background-color: red; */
+  /* background-color: var(--vt-c-white-mute); */
+  background-color: var(--vt-c-black-mute);
 }
 
 /* a,
