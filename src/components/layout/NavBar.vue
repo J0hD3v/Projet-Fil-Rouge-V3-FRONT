@@ -1,70 +1,106 @@
 <template>
 
-    <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                    >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active me-2 py-2">
-                            <RouterLink to="/" class="text-dark text-decoration-none">
-                                Home
-                            </RouterLink>
-                        </li>
-                        <li class="nav-item me-2 py-2">
-                            <RouterLink to="/login" class="text-dark text-decoration-none">
-                                Login
-                            </RouterLink>
-                        </li>
-                        <li class="nav-item me-2 py-2">
-                            <RouterLink to="/gallery" class="text-dark text-decoration-none">
-                                Gallery
-                            </RouterLink>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a
-                                class="nav-link dropdown-toggle text-dark"
-                                href="#"
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                                >
-                                Dropdown
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-item me-2">
-                                    <RouterLink to="/users" class="text-dark text-decoration-none">
-                                        Users
-                                    </RouterLink>
-                                </li>
-                                <li class="dropdown-item me-2">
-                                    <RouterLink to="/about" class="text-dark text-decoration-none">
-                                        About
-                                    </RouterLink>
-                                </li>
-                                <li class="dropdown-item me-2">
-                                    <RouterLink to="/truc" class="text-dark text-decoration-none">
-                                        test 404
-                                    </RouterLink>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active mx-2 py-2">
+                        <RouterLink to="/" class="text-dark text-decoration-none">
+                            Accueil
+                        </RouterLink>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a
+                            class="nav-link dropdown-toggle text-dark"
+                            href="#"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            >
+                            Evenements
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item">
+                                <RouterLink to="/gallery" class="text-dark text-decoration-none">
+                                    Tournois
+                                </RouterLink>
+                            </li>
+                            <li class="dropdown-item">
+                                <RouterLink to="/" class="text-dark text-decoration-none">
+                                    Point du mois
+                                </RouterLink>
+                            </li>
+                            <li class="dropdown-item">
+                                <RouterLink to="/gallery" class="text-dark text-decoration-none">
+                                    Galerie
+                                </RouterLink>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a
+                            class="nav-link dropdown-toggle text-dark"
+                            href="#"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            >
+                            Reservation
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item">
+                                <RouterLink to="/lessons" class="text-dark text-decoration-none">
+                                    Cours
+                                </RouterLink>
+                            </li>
+                            <li class="dropdown-item">
+                                <RouterLink to="/seminary" class="text-dark text-decoration-none">
+                                    Seminaire
+                                </RouterLink>
+                            </li>
+                            <li class="dropdown-item">
+                                <RouterLink to="/contact" class="text-dark text-decoration-none">
+                                    Contact
+                                </RouterLink>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item mx-2 py-2">
+                        <RouterLink to="/about" class="text-dark text-decoration-none">
+                            About
+                        </RouterLink>
+                    </li>
+                    <li class="nav-item mx-2 py-2">
+                        <RouterLink to="/truc" class="text-dark text-decoration-none">
+                            Test 404
+                        </RouterLink>
+                    </li>
+                    <li class="nav-item mx-2 py-2">
+                        <RouterLink to="/login" class="text-dark text-decoration-none">
+                            Login
+                        </RouterLink>
+                    </li>
+                    <li class="nav-item mx-2 py-2">
+                        <RouterLink to="/users" class="text-dark text-decoration-none">
+                            Users
+                        </RouterLink>
+                    </li>
+                </ul>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
 </template>
 
@@ -75,6 +111,12 @@
 </script>
 
 <style>
+
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+    }
 
     .nav-item:not(.disabled, .dropdown-toggle, .dropdown) {
         &::after {
