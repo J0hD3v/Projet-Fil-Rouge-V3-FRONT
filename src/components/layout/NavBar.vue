@@ -48,7 +48,7 @@
                                         Users
                                     </RouterLink>
                                 </li>
-                                <li class="nav-item me-2 py-2">
+                                <li class="dropdown-item me-2">
                                     <RouterLink to="/about" class="text-dark text-decoration-none">
                                         About
                                     </RouterLink>
