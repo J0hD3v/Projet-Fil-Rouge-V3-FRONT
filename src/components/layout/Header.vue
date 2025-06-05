@@ -1,14 +1,14 @@
 <template>
 
     <header>
-        <h1>Sol Violette</h1>
+        <h1>{{ title }}</h1>
     </header>
 
 </template>
 
 <script setup>
 
-    
+    const title = "Padel Club Pau";
 
 </script>
 
@@ -22,9 +22,9 @@
     }
     
     header {
-        background-color: white;
+        /* background-color: var(--vt-c-white-mute); */
+        background-color: var(--vt-c-black-mute);
         padding: 2rem 0;
-        /* border-bottom: 4px solid red; */
     }
 
     h1 {
@@ -32,6 +32,13 @@
         color: red;
         text-align: center;
         font-weight: bold;
+        margin: 0;
+    }
+
+    @media (max-width: 992px) {
+        header {
+            display: none;
+        }
     }
 
 </style>
