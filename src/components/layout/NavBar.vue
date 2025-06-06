@@ -2,7 +2,7 @@
 
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img :src=logoClub.src :alt=logoClub.alt></a>
+            <a class="navbar-brand" href="/"><img :src=logoClub.src :alt=logoClub.alt></a>
             <h1>{{ title }}</h1>
             <button
                 class="navbar-toggler"
@@ -34,12 +34,12 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-item">
-                                <RouterLink to="/gallery" class="text-decoration-none">
+                                <RouterLink to="/tournaments" class="text-decoration-none">
                                     Tournois
                                 </RouterLink>
                             </li>
                             <li class="dropdown-item">
-                                <RouterLink to="/" class="text-decoration-none">
+                                <RouterLink to="/contest" class="text-decoration-none">
                                     Point du mois
                                 </RouterLink>
                             </li>
@@ -62,12 +62,17 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-item">
-                                <RouterLink to="/lessons" class="text-decoration-none">
-                                    Cours
+                                <RouterLink to="/courts" class="text-decoration-none">
+                                    Terrains
                                 </RouterLink>
                             </li>
                             <li class="dropdown-item">
-                                <RouterLink to="/seminary" class="text-decoration-none">
+                                <RouterLink to="/lessons" class="text-decoration-none">
+                                    Cours collectif
+                                </RouterLink>
+                            </li>
+                            <li class="dropdown-item">
+                                <RouterLink to="/seminar" class="text-decoration-none">
                                     Seminaire
                                 </RouterLink>
                             </li>
