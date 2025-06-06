@@ -15,7 +15,7 @@
                 >
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active mx-2 py-2">
                         <RouterLink to="/" class="text-decoration-none">
@@ -88,6 +88,8 @@
                             Test 404
                         </RouterLink>
                     </li>
+                </ul>
+                <ul class="navbar-nav mr-auto">
                     <li class="nav-item mx-2 py-2">
                         <RouterLink to="/login" class="text-decoration-none">
                             Login
@@ -162,7 +164,6 @@
     }
 
     .navbar-brand>img {
-        /* height: 50px; */
         height: var(--logoHeight);
     }
 
@@ -179,7 +180,6 @@
 
         .navbar-collapse {
             position: absolute;
-            /* top: 10vh; */
             top: calc(var(--logoHeight) + 25px);
             right: 0;
             padding: 1rem;

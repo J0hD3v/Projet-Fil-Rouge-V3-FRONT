@@ -38,7 +38,7 @@
         <!-- ************ TEST ************ -->
 
 
-        <Carousel :value="messages" :numVisible="1" :numScroll="1" class="carousel">
+        <Carousel :value="messages" :numVisible="1" :numScroll="1" :circular="true" :allowAutoplay="true" :autoplayInterval="4000" :showNavigators="false" :showIndicators="false" class="carousel">
             <template #item="slotProps">
                 <div class="border border-surface-200 dark:border-surface-700 rounded m-2 p-2">
                     <div class="flex justify-between items-center">
@@ -73,6 +73,10 @@ onMounted(() => {
         {
             id: '0002',
             message: 'Ceci est un autre message à afficher.'
+        },
+        {
+            id: '0003',
+            message: 'Ceci est encore un autre message à afficher.'
         }
     ]
 })
