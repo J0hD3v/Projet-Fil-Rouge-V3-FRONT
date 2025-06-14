@@ -1,8 +1,8 @@
 <template>
 
-    <Carousel v-if="isTextOnly" :value="content" :numVisible="1" :numScroll="1" :circular="circular" :allowAutoplay="allowAutoplay" :autoplayInterval="autoplayInterval" :showNavigators="showNavigators" :showIndicators="showIndicators" class="carousel">
+    <Carousel v-if="isTextOnly" :value="content" class="carousel" :numVisible="1" :numScroll="1" :circular="circular" :allowAutoplay="allowAutoplay" :autoplayInterval="autoplayInterval" :showNavigators="showNavigators" :showIndicators="showIndicators" >
         <template #item="slotProps">
-            <div class="border border-surface-200 dark:border-surface-700 rounded m-2 p-2">
+            <div class="border border-surface-200 dark:border-surface-700 rounded m-2 p-2 bg-info">
                 <div class="flex justify-between items-center">
                     <div class="mt-0 font-semibold text-xl text-center">
                         <p>{{ slotProps.data.message }}</p>
@@ -13,9 +13,9 @@
     </Carousel>
 
 
-    <Carousel v-else :value="content" :numVisible="1" :numScroll="1" class="carousel" :circular="circular" :allowAutoplay="allowAutoplay" :autoplayInterval="autoplayInterval" :showNavigators="showNavigators" :showIndicators="showIndicators">
+    <Carousel v-else :value="content" class="carousel" :numVisible="1" :numScroll="1" :circular="circular" :allowAutoplay="allowAutoplay" :autoplayInterval="autoplayInterval" :showNavigators="showNavigators" :showIndicators="showIndicators" >
         <template #item="slotProps">
-            <div class="border border-surface-200 dark:border-surface-700 rounded m-2 p-2">
+            <div class="border border-surface-200 dark:border-surface-700 rounded m-2 p-2 bg-info">
                 <div class="mb-4">
                     <div class="d-flex justify-content-center">
                         <img
@@ -85,7 +85,7 @@
 <style scoped>
 
     .carousel {
-        width: 60vw;
+        width: 100vw;
         max-width: 600px;
         & p {
             font-size: 1rem;

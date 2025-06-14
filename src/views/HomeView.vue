@@ -3,7 +3,10 @@
         <h1 class="m-4">Home View</h1>
 
         <Carousel :content="products" :circular="true" :showIndicators="true" :showNavigators="true"/>
-        <Carousel :content="messages" :isTextOnly="true" :circular="true" :allowAutoplay="true" :autoplayInterval="4000"/>
+        
+        <section class="containerTextCarousel d-flex justify-content-center">
+            <Carousel :content="messages" :isTextOnly="true" :circular="true" :allowAutoplay="true" :autoplayInterval="4000" :showNavigators="true"/>
+        </section>
         
     </div>
 </template>
@@ -43,6 +46,9 @@ const messages = ref([]);
 
 <style scoped>
 
-
+    .containerTextCarousel {
+        background-color: rgb(212, 115, 115);
+        width: -webkit-fill-available;
+    }
 
 </style>
