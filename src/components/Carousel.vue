@@ -2,7 +2,7 @@
 
     <Carousel v-if="isTextOnly" :value="content" class="carousel" :numVisible="1" :numScroll="1" :circular="circular" :allowAutoplay="allowAutoplay" :autoplayInterval="autoplayInterval" :showNavigators="showNavigators" :showIndicators="showIndicators" >
         <template #item="slotProps">
-            <div class="border border-surface-200 dark:border-surface-700 rounded m-2 p-2 bg-info">
+            <div class="textCarousel border border-surface-200 dark:border-surface-700 rounded m-2 p-2">
                 <div class="flex justify-between items-center">
                     <div class="mt-0 font-semibold text-xl text-center">
                         <p>{{ slotProps.data.message }}</p>
@@ -94,6 +94,13 @@
         & img {
             width: 100%;
         }
+    }
+
+    .textCarousel {
+        /* background-image: url(../assets/images/picture.png);
+        background-position: center;
+        background-size: cover; */
+        background-color: lightblue;
     }
 
 </style>

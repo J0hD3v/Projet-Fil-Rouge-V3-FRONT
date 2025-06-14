@@ -102,7 +102,7 @@
                     </li>
                     <li class="nav-item mx-2 py-2">
                         <RouterLink to="/users" class="text-decoration-none">
-                            Users
+                            <i class="pi pi-user" style="font-size: 1.5rem"></i>
                         </RouterLink>
                     </li>
                 </ul>

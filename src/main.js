@@ -1,6 +1,7 @@
 import './assets/main.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap'
+import 'primeicons/primeicons.css';
 
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -15,6 +16,9 @@ app.mount('#app');
 
 app.use(PrimeVue, {
     theme: {
-        preset: Aura
+        preset: Aura,
+        options: {
+            darkModeSelector: '.my-app-dark'
+        }
     }
 });

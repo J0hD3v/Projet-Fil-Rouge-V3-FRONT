@@ -2,12 +2,21 @@
     <div class="d-flex flex-column align-items-center min-vh-100 mt-5">
         <h1 class="m-4">Home View</h1>
 
-        <Carousel :content="products" :circular="true" :showIndicators="true" :showNavigators="true"/>
+        <TextContainer :content="information"/>
+
+        <!-- <Carousel :content="products" :circular="true" :showIndicators="true" :showNavigators="true"/> -->
         
         <section class="containerTextCarousel d-flex justify-content-center">
-            <Carousel :content="messages" :isTextOnly="true" :circular="true" :allowAutoplay="true" :autoplayInterval="4000" :showNavigators="true"/>
+            <Carousel :content="messages" :isTextOnly="true" :circular="true" :allowAutoplay="true" :autoplayInterval="4000" />
         </section>
+
+        <Popup :visible="showPopup" @popup-close="showPopup=false" />
+        <!-- <Button @click="showPopup=true">POPUP</Button> -->
+
+        <!-- <DarkModeButton /> -->
         
+        <SpeedDial :model="items" :radius="120" type="quarter-circle" direction="up-left" :style="{ position: 'fixed', right: 0, bottom: '1rem' }" />
+
     </div>
 </template>
 
@@ -16,6 +25,10 @@
 import { ref, onMounted } from "vue";
 import { ProductService } from "@/service/ProductService";
 import Carousel from "@/components/Carousel.vue";
+import TextContainer from "@/components/TextContainer.vue";
+import Popup from "@/components/popup.vue";
+import DarkModeButton from "@/components/DarkModeButton.vue";
+import { SpeedDial } from "primevue";
 
 onMounted(() => {
     ProductService.getProductsSmall().then(
@@ -38,8 +51,41 @@ onMounted(() => {
     ]
 })
 
+const items = ref([
+    {
+        label: 'Ouvrir',
+        icon: 'pi pi-external-link',
+        command: () => {
+            showPopup.value = true;
+        }
+    },
+    {
+        label: 'Darkmode',
+        icon: 'pi pi-lightbulb',
+        command: () => {
+            document.documentElement.classList.toggle('my-app-dark');
+        }
+    }
+]);
+
+const showPopup = ref(false);
 const products = ref([]);
 const messages = ref([]);
+
+const information = [
+    {
+        title: "A propos de nous :",
+        content: [
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!"
+        ]
+    },
+    {
+        title: "Horaires d'ouverture :",
+        content: [
+            "Du Lundi au samedi : de 10h à 19h", "Le dimanche : sur réservation"
+        ]
+    }
+]
 
 </script>
 
