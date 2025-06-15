@@ -2,7 +2,7 @@
     <div class="d-flex flex-column align-items-center min-vh-100 mt-5">
         <h1 class="m-4">Home View</h1>
 
-        <TextContainer :content="information"/>
+        <TextContainer :content="information" class="m-4" />
 
         <!-- <Carousel :content="products" :circular="true" :showIndicators="true" :showNavigators="true"/> -->
         
@@ -15,7 +15,9 @@
 
         <!-- <DarkModeButton /> -->
         
-        <SpeedDial :model="items" :radius="120" type="quarter-circle" direction="up-left" :style="{ position: 'fixed', right: 0, bottom: '1rem' }" />
+        <!-- <SpeedDial :model="items" :radius="120" type="quarter-circle" direction="up-left" :style="{ position: 'fixed', right: 0, bottom: '1rem' }" /> -->
+        <SpeedDial :model="speedDialItems" direction="up" :style="{ position: 'fixed', right: '1rem', bottom: '1rem' }" :buttonProps="{ severity: 'info', rounded: true }" :tooltipOptions="{ position: 'left' }" />
+        <SpeedDial :model="socialMediasItems" direction="up" :style="{ position: 'fixed', left: '1rem', bottom: '1rem' }" :buttonProps="{ severity: '', rounded: true }" :tooltipOptions="{ position: 'right' }" />
 
     </div>
 </template>
@@ -51,7 +53,7 @@ onMounted(() => {
     ]
 })
 
-const items = ref([
+const speedDialItems = ref([
     {
         label: 'Ouvrir',
         icon: 'pi pi-external-link',
@@ -67,6 +69,23 @@ const items = ref([
         }
     }
 ]);
+
+const socialMediasItems = ref([
+    {
+        label: 'Facebook',
+        icon: 'pi pi-facebook',
+        command: () => {
+            console.log('ouvre facebook');
+        }
+    },
+    {
+        label: 'Instagram',
+        icon: 'pi pi-instagram',
+        command: () => {
+            console.log('ouvre instagram');
+        }
+    }
+])
 
 const showPopup = ref(false);
 const products = ref([]);
