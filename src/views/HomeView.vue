@@ -28,7 +28,7 @@ import { ref, onMounted } from "vue";
 import { ProductService } from "@/service/ProductService";
 import Carousel from "@/components/Carousel.vue";
 import TextContainer from "@/components/TextContainer.vue";
-import Popup from "@/components/popup.vue";
+import Popup from "@/components/Popup.vue";
 import DarkModeButton from "@/components/DarkModeButton.vue";
 import { SpeedDial } from "primevue";
 
@@ -73,14 +73,14 @@ const speedDialItems = ref([
 const socialMediasItems = ref([
     {
         label: 'Facebook',
-        icon: 'pi pi-facebook',
+        icon: 'pi pi-facebook bigIcon',
         command: () => {
             console.log('ouvre facebook');
         }
     },
     {
         label: 'Instagram',
-        icon: 'pi pi-instagram',
+        icon: 'pi pi-instagram bigIcon',
         command: () => {
             console.log('ouvre instagram');
         }
@@ -115,5 +115,7 @@ const information = [
         background-color: rgb(212, 115, 115);
         width: -webkit-fill-available;
     }
+
+    
 
 </style>
