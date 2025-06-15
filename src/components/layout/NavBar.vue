@@ -24,34 +24,6 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a
-                            class="nav-link dropdown-toggle"
-                            href="#"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                            >
-                            Evenements
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-item">
-                                <RouterLink to="/tournaments" class="text-decoration-none">
-                                    Tournois
-                                </RouterLink>
-                            </li>
-                            <li class="dropdown-item">
-                                <RouterLink to="/contest" class="text-decoration-none">
-                                    Point du mois
-                                </RouterLink>
-                            </li>
-                            <li class="dropdown-item">
-                                <RouterLink to="/gallery" class="text-decoration-none">
-                                    Galerie
-                                </RouterLink>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a
                             class="nav-link dropdown-toggle "
                             href="#"
                             role="button"
@@ -62,23 +34,41 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-item">
-                                <RouterLink to="/courts" class="text-decoration-none">
-                                    Terrains
-                                </RouterLink>
-                            </li>
-                            <li class="dropdown-item">
-                                <RouterLink to="/lessons" class="text-decoration-none">
-                                    Cours collectif
-                                </RouterLink>
-                            </li>
-                            <li class="dropdown-item">
-                                <RouterLink to="/seminar" class="text-decoration-none">
-                                    Seminaire
+                                <RouterLink to="/reservation" class="text-decoration-none">
+                                    Reservation
                                 </RouterLink>
                             </li>
                             <li class="dropdown-item">
                                 <RouterLink to="/contact" class="text-decoration-none">
                                     Contact
+                                </RouterLink>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            >
+                            Evenements
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item">
+                                <RouterLink to="/tournois" class="text-decoration-none">
+                                    Tournois
+                                </RouterLink>
+                            </li>
+                            <li class="dropdown-item">
+                                <RouterLink to="/concours" class="text-decoration-none">
+                                    Point du mois
+                                </RouterLink>
+                            </li>
+                            <li class="dropdown-item">
+                                <RouterLink to="/galerie" class="text-decoration-none">
+                                    Galerie
                                 </RouterLink>
                             </li>
                         </ul>
@@ -96,12 +86,12 @@
                 </ul>
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item mx-2 py-2">
-                        <RouterLink to="/login" class="text-decoration-none">
-                            Login
+                        <RouterLink to="/connexion" class="text-decoration-none">
+                            Connexion
                         </RouterLink>
                     </li>
                     <li class="nav-item mx-2 py-2">
-                        <RouterLink to="/users" class="text-decoration-none">
+                        <RouterLink to="/profil" class="text-decoration-none">
                             <i class="pi pi-user" style="font-size: 1.5rem"></i>
                         </RouterLink>
                     </li>

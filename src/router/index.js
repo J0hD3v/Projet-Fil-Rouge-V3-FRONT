@@ -10,23 +10,43 @@ const router = createRouter({
       component: HomeView,
     },
     {
+      path: '/reservation',
+      name: 'reservation',
+      component: () => import('../views/BookingView.vue'),
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: () => import('../views/AboutView.vue'),
+    },
+    {
+      path: '/tournois',
+      name: 'tournois',
+      component: () => import('../views/AboutView.vue'),
+    },
+    {
+      path: '/concours',
+      name: 'concours',
+      component: () => import('../views/AboutView.vue'),
+    },
+    {
+      path: '/galerie',
+      name: 'galerie',
+      component: () => import('../views/GalleryView.vue'),
+    },
+    {
       path: '/about',
       name: 'about',
       component: () => import('../views/AboutView.vue'),
     },
     {
-      path: '/users',
-      name: 'users',
+      path: '/profil',
+      name: 'profil',
       component: () => import('../views/UsersView.vue'),
     },
     {
-      path: '/gallery',
-      name: 'gallery',
-      component: () => import('../views/GalleryView.vue'),
-    },
-    {
-      path: '/login',
-      name: 'login',
+      path: '/connexion',
+      name: 'connexion',
       component: () => import('../views/LoginView.vue'),
     },
     {
