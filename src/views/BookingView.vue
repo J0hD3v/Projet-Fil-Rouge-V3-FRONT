@@ -1,6 +1,9 @@
 <template>
 
-    <PopupBottom buttonLabel="Réserver" buttonIcon="pi pi-calendar" title="Réservation" :formFields="formFields" />
+    <Toast  />
+
+    <PopupBottom :formFields="formFields" title="Réservation" buttonLabel="Réserver" buttonIcon="pi pi-calendar" buttonClass="largeButton" />
+    <PopupBottom :formFields="formFields2" title="Inscription" buttonLabel="S'inscrire" buttonIcon="pi pi-sign-in" buttonClass="largeButton" @dateChange="handleDateChange" />
     
     <div class="calendarContainer">
         <ScheduleXCalendar :calendar-app="calendarApp" />
@@ -10,6 +13,7 @@
 
 <script setup>
 
+    import { ref } from 'vue';
     import PopupBottom from '@/components/PopupBottom.vue';
     import { ScheduleXCalendar } from '@schedule-x/vue';
     import {
@@ -23,14 +27,26 @@
     import '@schedule-x/theme-default/dist/index.css';
     import { createEventModalPlugin } from '@schedule-x/event-modal';
 
+    const buttonClick = ref(false);
+
     const formFields = [
         {
             title: "Durée",
-            type: "duration"
+            type: "duration",
+            options: {
+                durationOptions: ["30min", "1h", "2h"]
+            }
         },
         {
             title: "Nombre de personnes",
-            type: "number"
+            type: "number",
+            options: {
+                numberOptions: {
+                    step: 1,
+                    min: 1,
+                    max: 4
+                }
+            }
         },
         {
             title: "Location matériel",
@@ -38,12 +54,62 @@
         }
     ];
 
+    const formFields2 = [
+        {
+            title: "Date",
+            type: "date",
+            options: {
+                dateOptions: {
+                    // min: new Date(),
+                    min: null,
+                    max: null
+                }
+            }
+        },
+        {
+            title: "Evènement",
+            type: "list",
+            options: {
+                listOptions: []
+            }
+        }
+    ];
+
+    const events = [
+        {
+            id: 1,
+            title: 'Tournois mensuel',
+            start: '2025-06-20 09:00',
+            end: '2025-06-20 18:00',
+            description: 'Places restantes: ' + 7 + ' - Arriver 15min avant le début svp',
+            location: 'Terrain 3',
+            calendarId: 'tournois'
+        },
+        {
+            id: 2,
+            title: 'Cours collectif',
+            start: '2025-06-20 12:00',
+            end: '2025-06-20 13:00',
+            description: 'Places restantes: ' + 3,
+            location: 'Terrain 1',
+            people: ['Coach: Senpai']
+        },
+        {
+            id: 3,
+            title: 'Journée d\'inauguration',
+            start: '2025-06-19',
+            end: '2025-06-19',
+            description: 'Pour fêter l\'ouverture du club, bienvenue à tout le monde !',
+            calendarId: 'special'
+        }
+    ]
+
     const eventModal = createEventModalPlugin();
 
     const calendarApp = createCalendar({
         locale: 'fr-FR',
         plugins: [eventModal],
-        selectedDate: '2025-06-19',
+        selectedDate: new Date().toISOString().split('T')[0],
         defaultView: viewWeek.name,
         views: [
             createViewDay(),
@@ -60,34 +126,7 @@
         weekOptions: {
             gridHeight: 500
         },
-        events: [
-            {
-                id: 1,
-                title: 'Tournois mensuel',
-                start: '2025-06-20 09:00',
-                end: '2025-06-20 18:00',
-                description: 'Places restantes: ' + 7 + ' - Arriver 15min avant le début svp',
-                location: 'terrain 3',
-                calendarId: 'tournois'
-            },
-            {
-                id: 2,
-                title: 'Cours collectif',
-                start: '2025-06-20 12:00',
-                end: '2025-06-20 13:00',
-                description: 'Places restantes: ' + 3,
-                location: 'Terrain 1',
-                people: ['Coach: Senpai']
-            },
-            {
-                id: 3,
-                title: 'Journée d\'inauguration',
-                start: '2025-06-19',
-                end: '2025-06-19',
-                description: 'Pour fêter l\'ouverture du club, bienvenue à tout le monde !',
-                calendarId: 'special'
-            }
-        ],
+        events: events,
         calendars: {
             tournois: {
                 colorName: 'tournois',
@@ -108,10 +147,26 @@
         },
         callbacks: {
             onEventClick(calendarEvent) {
-                // console.log('onEventClick', calendarEvent);
+                console.log(calendarEvent);
+                buttonClick.value = true;
             }
         }
     });
+
+    const handleDateChange = (date) => {
+        if (!date) return [];
+        const offset = date.getTimezoneOffset()
+        date = new Date(date.getTime() - (offset*60*1000))
+        date = date.toISOString().split('T')[0];
+        let filteredEvents = events.filter(event => {
+            return event.start.substring(0,10) == date;
+        })
+        let correspondingEvents = [];
+        filteredEvents.forEach(event => {
+            correspondingEvents.push(event.title + (event.location ? ` (${event.location})` : ''));
+        });
+        formFields2[1].options.listOptions = correspondingEvents;
+    }
 
 </script>
 

@@ -92,7 +92,7 @@
                     </li>
                     <li class="nav-item mx-2 py-2">
                         <RouterLink to="/profil" class="text-decoration-none">
-                            <i class="pi pi-user" style="font-size: 1.5rem"></i>
+                            <i class="pi pi-user" style="font-size: 1.5rem; color: red;"></i>
                         </RouterLink>
                     </li>
                 </ul>
