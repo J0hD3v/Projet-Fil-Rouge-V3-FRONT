@@ -101,6 +101,33 @@
             end: '2025-06-19',
             description: 'Pour fêter l\'ouverture du club, bienvenue à tout le monde !',
             calendarId: 'special'
+        },
+        {
+            id: 4,
+            title: 'Autre Cours collectif',
+            start: '2025-06-20 14:30',
+            end: '2025-06-20 15:30',
+            description: 'Places restantes: ' + 8,
+            location: 'Terrain 2',
+            people: ['Coach: Bruce Willis']
+        },
+        {
+            id: 5,
+            title: 'Encore autre Cours collectif',
+            start: '2025-06-20 15:00',
+            end: '2025-06-20 17:00',
+            description: 'Places restantes: ' + 5,
+            location: 'Terrain 4',
+            people: ['Coach: Bruce Wayne']
+        },
+        {
+            id: 6,
+            title: 'Cours collectif simultané',
+            start: '2025-06-20 15:00',
+            end: '2025-06-20 17:00',
+            description: 'Places restantes: ' + 4,
+            location: 'Terrain 1',
+            people: ['Coach: Jackie Chan']
         }
     ]
 

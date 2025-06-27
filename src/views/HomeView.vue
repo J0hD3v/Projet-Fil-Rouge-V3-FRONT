@@ -2,20 +2,18 @@
     <div class="d-flex flex-column align-items-center min-vh-100 mt-5">
         <h1 class="m-4">Home View</h1>
 
-        <TextContainer :content="information" class="m-4" />
+        <section class="backgroundImage"></section>
 
         <!-- <Carousel :content="products" :circular="true" :showIndicators="true" :showNavigators="true"/> -->
         
         <section class="containerTextCarousel d-flex justify-content-center">
-            <Carousel :content="messages" :isTextOnly="true" :circular="true" :allowAutoplay="true" :autoplayInterval="4000" />
+            <Carousel :content="messages" :isTextOnly="true" :circular="true" :allowAutoplay="true" :show-navigators="true" :autoplayInterval="5000" />
         </section>
+        
+        <TextContainer :content="information" class="m-4" />
 
         <Popup :visible="showPopup" @popup-close="showPopup=false" />
-        <!-- <Button @click="showPopup=true">POPUP</Button> -->
 
-        <!-- <DarkModeButton /> -->
-        
-        <!-- <SpeedDial :model="items" :radius="120" type="quarter-circle" direction="up-left" :style="{ position: 'fixed', right: 0, bottom: '1rem' }" /> -->
         <SpeedDial :model="speedDialItems" direction="up" :style="{ position: 'fixed', right: '1rem', bottom: '1rem' }" :buttonProps="{ severity: 'info', rounded: true }" :tooltipOptions="{ position: 'left' }" />
         <SpeedDial :model="socialMediasItems" direction="up" :style="{ position: 'fixed', left: '1rem', bottom: '1rem' }" :buttonProps="{ severity: '', rounded: true }" :tooltipOptions="{ position: 'right' }" />
 
@@ -116,6 +114,12 @@ const information = [
         width: -webkit-fill-available;
     }
 
-    
+    .backgroundImage {
+        background-image: url('../assets/images/background.png');
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: 40vh;
+    }
 
 </style>
