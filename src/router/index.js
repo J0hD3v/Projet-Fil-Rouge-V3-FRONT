@@ -17,17 +17,17 @@ const router = createRouter({
     {
       path: '/contact',
       name: 'contact',
-      component: () => import('../views/AboutView.vue'),
+      component: () => import('../views/AboutView.vue'),//ContactView
     },
     {
-      path: '/tournois',
-      name: 'tournois',
-      component: () => import('../views/AboutView.vue'),
+      path: '/evenements',
+      name: 'evenements',
+      component: () => import('../views/AboutView.vue'),//EventsView
     },
     {
       path: '/concours',
       name: 'concours',
-      component: () => import('../views/AboutView.vue'),
+      component: () => import('../views/AboutView.vue'),//ContestView
     },
     {
       path: '/galerie',

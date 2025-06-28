@@ -7,14 +7,24 @@
   margin: 0 auto;
   /* padding: 2rem; */
   font-weight: normal;
-  background-color: var(--vt-c-white-mute);
-  /* background-color: var(--vt-c-black-mute); */
+  /* background-color: var(--vt-c-white-mute); */
+  background-color: var(--vt-c-black-mute);
 }
+
+/* ----- Correctifs généraux ----- */
 
 .bigIcon {
   font-size: 1.2rem !important;
 }
 
+a {
+  text-decoration: none !important;
+}
+
 .p-carousel-item {
   align-content: center;
+}
+
+.p-panelmenu-panel {
+  border: none !important;
 }

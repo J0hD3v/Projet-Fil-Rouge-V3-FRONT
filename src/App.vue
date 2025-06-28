@@ -12,9 +12,9 @@
 
 <template>
     <Header />
-    <!-- <NavBar v-if="screenSize > 800" /> -->
-    <!-- <NavBarTest v-else /> -->
-    <NavBar />
+    <NavBar v-if="screenSize > 800" />
+    <NavBarTest v-else />
+    <!-- <NavBar /> -->
     <!-- <NavBarTest /> -->
     <RouterView />
     <Footer />

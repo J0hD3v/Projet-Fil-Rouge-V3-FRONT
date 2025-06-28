@@ -1,8 +1,10 @@
 <template>
-    <div class="d-flex flex-column align-items-center min-vh-100 mt-5">
-        <h1 class="m-4">Home View</h1>
+    <div class="d-flex flex-column align-items-center min-vh-100 ">
+        <!-- <h1 class="m-4">Home View</h1> -->
 
-        <section class="backgroundImage"></section>
+        <section class="backgroundImage">
+            <Button label="Réserver un terrain" icon="pi pi-calendar" as="a" href="/reservation" raised class="shadowed p-3" />
+        </section>
 
         <!-- <Carousel :content="products" :circular="true" :showIndicators="true" :showNavigators="true"/> -->
         
@@ -14,8 +16,8 @@
 
         <Popup :visible="showPopup" @popup-close="showPopup=false" />
 
-        <SpeedDial :model="speedDialItems" direction="up" :style="{ position: 'fixed', right: '1rem', bottom: '1rem' }" :buttonProps="{ severity: 'info', rounded: true }" :tooltipOptions="{ position: 'left' }" />
-        <SpeedDial :model="socialMediasItems" direction="up" :style="{ position: 'fixed', left: '1rem', bottom: '1rem' }" :buttonProps="{ severity: '', rounded: true }" :tooltipOptions="{ position: 'right' }" />
+        <SpeedDial :model="speedDialItems" direction="up" :style="{ position: 'fixed', right: '1rem', bottom: '0.75rem' }" :buttonProps="{ severity: 'info', rounded: true }" :tooltipOptions="{ position: 'left' }" />
+        <SpeedDial :model="socialMediasItems" direction="up" :style="{ position: 'fixed', left: '1rem', bottom: '0.75rem' }" :buttonProps="{ severity: '', rounded: true }" :tooltipOptions="{ position: 'right' }" />
 
     </div>
 </template>
@@ -27,7 +29,7 @@ import { ProductService } from "@/service/ProductService";
 import Carousel from "@/components/Carousel.vue";
 import TextContainer from "@/components/TextContainer.vue";
 import Popup from "@/components/Popup.vue";
-import DarkModeButton from "@/components/DarkModeButton.vue";
+import Button from "primevue/button";
 import { SpeedDial } from "primevue";
 
 onMounted(() => {
@@ -120,6 +122,14 @@ const information = [
         background-size: cover;
         width: 100%;
         height: 40vh;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .shadowed {
+        box-shadow: 0 0 50px black;
     }
 
 </style>
