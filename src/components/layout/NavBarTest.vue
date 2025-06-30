@@ -14,18 +14,20 @@
                     </span>
                 </div>
 
+                <!-- <Button label="Connexion" icon="pi pi-user" as="a" href="/users" /> -->
+
                 <Splitter style="height: 50px" class="mb-2">
-                    <SplitterPanel class="d-flex align-items-center justify-content-center">
-                        <Button label="Connexion" icon="pi pi-user" as="a" href="/users" />
+                    <SplitterPanel class="d-flex align-items-center justify-content-center" min-size="50">
+                        <a href="#" class="navBarLink submenu h-100 w-100 d-flex align-items-center justify-content-center"><Avatar image="https://thispersondoesnotexist.com/" class="me-2" size="normal" shape="circle" />Profil</a>
                     </SplitterPanel>
-                    <SplitterPanel class="d-flex align-items-center justify-content-center">
-                        <a href="#" class="navBarLink menu h-100 w-100 d-flex align-items-center justify-content-center">Truc <span class="menu pi pi-user ms-2" /></a>
+                    <SplitterPanel class="d-flex align-items-center justify-content-center" min-size="50">
+                        <a href="#" class="navBarLink submenu h-100 w-100 d-flex align-items-center justify-content-center">Déconnexion <span class="menu pi pi-sign-out ms-2" /></a>
                     </SplitterPanel>
                 </Splitter>
                 
                 <div class="overflow-y-auto">
                     <!-- <PanelMenu :model="items" multiple /> -->
-                    <PanelMenu :model="items" multiple>
+                    <PanelMenu :model="navbar" multiple>
                         <template #item="{ item }">
                             <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
                                 <a v-ripple :class="item.head ? 'menu':'submenu'" class="navBarLink d-flex align-items-center cursor-pointer px-4 py-2" :href="href" @click="navigate">
@@ -63,18 +65,20 @@
 
     const visible = ref(false);
 
-    const items = [
+    const navbar = [
         {
             label: 'Accueil',
             icon: 'pi pi-home',
-            route: '/home',
-            head: true
+            route: '/',
+            head: true,
+            command: () => visible.value = false
         },
         {
             label: 'Réservation',
             icon: 'pi pi-calendar',
-            route: '/home',
-            head: true
+            route: '/reservation',
+            head: true,
+            command: () => visible.value = false
         },
         {
             label: 'Evènements',
@@ -126,7 +130,9 @@
             label: 'Contact',
             icon: 'pi pi-send',
             visible: 'true',
-
+            route: '/reservation',
+            head: true,
+            command: () => visible.value = false
         }
     ]
 
