@@ -28,3 +28,8 @@ a {
 .p-panelmenu-panel {
   border: none !important;
 }
+
+.p-steppanel {
+  background: unset !important;
+  color: unset !important;
+}

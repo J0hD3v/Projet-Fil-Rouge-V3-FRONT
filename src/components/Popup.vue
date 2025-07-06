@@ -5,7 +5,7 @@
 
             <Card class="card">
                 <template #header>
-                    <img alt="user header" src="../assets/images/background.png" class="w-100" />
+                    <img alt="user header" src="../assets/images/background.png" class="w-100 rounded-top" />
                 </template>
                 <template #title>Advanced Card</template>
                 <template #subtitle>Card subtitle</template>

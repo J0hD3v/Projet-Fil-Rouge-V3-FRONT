@@ -26,8 +26,8 @@
                 </Splitter>
                 
                 <div class="overflow-y-auto">
-                    <!-- <PanelMenu :model="items" multiple /> -->
-                    <PanelMenu :model="navbar" multiple>
+                    <!-- <PanelMenu :model="navbar" multiple /> -->
+                    <PanelMenu :model="navbar">
                         <template #item="{ item }">
                             <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
                                 <a v-ripple :class="item.head ? 'menu':'submenu'" class="navBarLink d-flex align-items-center cursor-pointer px-4 py-2" :href="href" @click="navigate">
@@ -134,7 +134,7 @@
             head: true,
             command: () => visible.value = false
         }
-    ]
+    ];
 
 </script>
 

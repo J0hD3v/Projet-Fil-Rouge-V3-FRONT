@@ -2,6 +2,7 @@
     import Header from './components/layout/Header.vue'
     import NavBar from './components/layout/NavBar.vue'
     import NavBarTest from './components/layout/NavBarTest.vue'
+    import NavBar3 from './components/layout/NavBar3.vue'
     import Footer from './components/layout/Footer.vue'
     import { RouterView } from 'vue-router'
 
@@ -12,7 +13,7 @@
 
 <template>
     <Header />
-    <NavBar v-if="screenSize > 800" />
+    <NavBar3 v-if="screenSize > 800" />
     <NavBarTest v-else />
     <!-- <NavBar /> -->
     <!-- <NavBarTest /> -->
