@@ -17,12 +17,16 @@
                         <div class="form-container">
                             <form action="" method="post" id="connectionForm" @submit.prevent="connexion()">
                                 <div class="form-group">
-                                    <label for="name">Nom:</label>
-                                    <input v-model="username" type="text" id="name" name="username" placeholder="Votre nom" required autocomplete="off" style="color: black;">
+                                    <FloatLabel variant="on">
+                                        <label for="name">Nom</label>
+                                        <InputText v-model="username" type="text" id="name" name="username" required autocomplete="off" style="color: black;" />
+                                    </FloatLabel>
                                 </div>
                                 <div class="form-group">
-                                    <label for="password">Mot de passe:</label>
-                                    <input v-model="password" type="password" id="password" name="password" placeholder="Votre mot de passe" required style="color: black;">
+                                    <FloatLabel variant="on">
+                                        <label for="password">Mot de passe</label>
+                                        <InputText v-model="password" type="password" id="password" name="password" required style="color: black;" />
+                                    </FloatLabel>
                                 </div>
                             </form>
                         </div>
@@ -48,6 +52,8 @@
     import { ref } from 'vue';
     import axios from 'axios';
     import Card from 'primevue/card';
+    import InputText from 'primevue/inputtext';
+    import FloatLabel from 'primevue/floatlabel';
     import { Button } from 'primevue';
     import { useToast } from 'primevue';
 
@@ -177,7 +183,6 @@
 
     .form-group label {
         display: block;
-        font-weight: bold;
         margin-bottom: 5px;
     }
 

@@ -5,7 +5,8 @@
             <div class="textCarousel border border-surface-200 dark:border-surface-700 rounded m-2 p-2">
                 <div class="flex justify-between align-items-center">
                     <div class="mt-0 font-semibold text-xl text-center">
-                        <p>{{ slotProps.data.message }}</p>
+                        <p v-if="slotProps.data.link"><a :href=slotProps.data.link class="carouselLink">{{ slotProps.data.message }} <span class="pi pi-external-link"></span></a></p>
+                        <p v-else>{{ slotProps.data.message }}</p>
                     </div>
                 </div>
             </div>
@@ -102,6 +103,16 @@
         background-size: cover; */
         /* background-color: var(--myLightBlue2); */
         background-color: #ffffff;
+
+        & p,a {
+            color: black;
+            font-size: 1.5rem;
+        }
+    }
+    
+    .carouselLink {
+        /* color: black; */
+        /* text-decoration: underline #ff3028; */
     }
 
 </style>

@@ -41,15 +41,16 @@ onMounted(() => {
     messages.value = [
         {
             id: '0001',
-            message: 'Ceci est un message à afficher. (1)'
+            message: `Ouverture prochaine du club, restez connectés !`
         },
         {
             id: '0002',
-            message: 'Ceci est un autre message à afficher. (2)'
+            message: `Tournoi d'inauguration le 14 novembre, inscrivez-vous !`,
+            link: 'http://localhost:5173/reservation'
         },
         {
             id: '0003',
-            message: 'Ceci est encore un autre message à afficher. (3)'
+            message: `Les cours débutent dès lundi, réservez votre place !`
         }
     ]
 })
@@ -96,7 +97,11 @@ const information = [
     {
         title: "A propos de nous :",
         content: [
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!"
+            `Bienvenue au Padel Club Pau, un lieu dédié aux passionnés de padel, débutants comme confirmés.\n
+            Situé dans la périphérie ouest de la ville, notre club propose des installations modernes avec plusieurs terrains intérieurs et extérieurs.
+            Nous offrons des cours pour tous les niveaux, des compétitions régulières et un espace convivial pour se détendre après les matchs.
+            Que vous souhaitiez progresser, vous défouler ou simplement passer un bon moment entre amis, notre équipe vous accueille toute l'année dans une ambiance chaleureuse.
+            Rejoignez notre communauté dynamique et vivez pleinement votre passion du padel !`
         ]
     },
     {
