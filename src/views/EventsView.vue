@@ -2,7 +2,7 @@
 
     <Toast  />
 
-    <PopupBottom :formFields="formFields" title="Réservation" buttonLabel="Réserver" buttonIcon="pi pi-calendar" buttonClass="largeButton" />
+    <PopupBottom :formFields="formFields" title="Inscription" buttonLabel="S'inscrire" buttonIcon="pi pi-sign-in" buttonClass="largeButton" @dateChange="handleDateChange" />
     
     <div class="calendarContainer">
         <ScheduleXCalendar :calendar-app="calendarApp" />
@@ -34,50 +34,25 @@
             type: "date",
             options: {
                 dateOptions: {
-                    min: new Date(),
+                    // min: new Date(),
+                    min: null,
                     max: null
                 }
             }
         },
         {
-            title: "Heure",
-            type: "time",
+            title: "Evènement",
+            type: "list",
             options: {
-                dateOptions: {
-                    stepMinute: 15,
-                    min: 8,
-                    max: 19
-                }
+                listOptions: []
             }
-        },
-        {
-            title: "Durée",
-            type: "duration",
-            options: {
-                durationOptions: ["1h", "1h30", "2h"]
-            }
-        },
-        {
-            title: "Nombre de personnes",
-            type: "number",
-            options: {
-                numberOptions: {
-                    step: 2,
-                    min: 2,
-                    max: 4
-                }
-            }
-        },
-        {
-            title: "Location matériel",
-            type: "checkbox"
         }
     ];
 
     const events = [
         {
             id: 1,
-            title: 'Terrain 1',
+            title: 'Tournois mensuel',
             start: '2025-09-20 09:00',
             end: '2025-09-20 18:00',
             description: 'Places restantes: ' + 7 + ' - Arriver 15min avant le début svp',
@@ -127,22 +102,6 @@
             description: 'Places restantes: ' + 4,
             location: 'Terrain 1',
             people: ['Coach: Jackie Chan']
-        },
-        {
-            id: 7,
-            title: 'Test',
-            start: '2025-09-19',
-            end: '2025-09-19',
-            description: 'test',
-            location: 'test'
-        },
-        {
-            id: 8,
-            title: 'Test',
-            start: '2025-09-19',
-            end: '2025-09-19',
-            description: 'test',
-            location: 'test'
         }
     ]
 
@@ -194,6 +153,21 @@
             }
         }
     });
+
+    const handleDateChange = (date) => {
+        if (!date) return [];
+        const offset = date.getTimezoneOffset()
+        date = new Date(date.getTime() - (offset*60*1000))
+        date = date.toISOString().split('T')[0];
+        let filteredEvents = events.filter(event => {
+            return event.start.substring(0,10) == date;
+        })
+        let correspondingEvents = [];
+        filteredEvents.forEach(event => {
+            correspondingEvents.push(event.title + (event.location ? ` (${event.location})` : ''));
+        });
+        formFields[1].options.listOptions = correspondingEvents;
+    }
 
 </script>
 

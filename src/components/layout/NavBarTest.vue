@@ -87,7 +87,7 @@
                 {
                     label: 'Programme',
                     icon: 'pi pi-calendar-clock',
-                    route: '/reservation',
+                    route: '/evenements',
                     command: () => visible.value = false
                 },
                 {

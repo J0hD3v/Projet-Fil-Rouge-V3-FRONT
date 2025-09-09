@@ -22,7 +22,7 @@ const router = createRouter({
     {
       path: '/evenements',
       name: 'evenements',
-      component: () => import('../views/AboutView.vue'),//EventsView
+      component: () => import('../views/EventsView.vue'),//EventsView
     },
     {
       path: '/concours',

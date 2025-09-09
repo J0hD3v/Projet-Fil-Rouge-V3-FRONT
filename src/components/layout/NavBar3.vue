@@ -86,7 +86,7 @@
                 {
                     label: 'Programme',
                     // icon: 'pi pi-calendar-clock',
-                    url: '/reservation',
+                    url: '/evenements',
                     // command: () => console.log('lien cliqué')
                 },
                 {

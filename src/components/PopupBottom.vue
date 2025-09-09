@@ -27,10 +27,22 @@
             <Checkbox v-if="field.type == 'checkbox'" v-model="selectedLocation" binary class="d-flex align-items-center" />
             <DatePicker v-if="field.type == 'date'"
                 v-model="selectedDate"
+                showIcon fluid iconDisplay="input"
                 :minDate="field.options.dateOptions.min"
                 dateFormat="dd/mm/yy"
-                @value-change="emits('dateChange', selectedDate)"
-            />
+                @value-change="emits('dateChange', selectedDate)">
+            </DatePicker>
+            <DatePicker v-if="field.type == 'time'"
+                v-model="selectedTime"
+                :minTime="field.options.dateOptions.min"
+                :maxTime="field.options.dateOptions.max"
+                :stepMinute="field.options.dateOptions.stepMinute"
+                showIcon fluid iconDisplay="input" timeOnly
+                @value-change="onTimeChange">
+                <template #inputicon="slotProps">
+                    <i class="pi pi-clock" @click="slotProps.clickCallback" />
+                </template>
+            </DatePicker>
             <Select v-if="field.type == 'list'" v-model="selectedElement" :options="field.options.listOptions" placeholder="..." class="w-full md w-50" />
         </div>
         <div class="d-flex justify-end gap-2">
@@ -87,10 +99,11 @@
     ]);
 
     const visible = ref(false);
-    const selectedDuration = ref('30min');
-    const selectedNumber = ref(1);
+    const selectedDuration = ref('1h');
+    const selectedNumber = ref(2);
     const selectedLocation = ref(false);
-    const selectedDate = ref();
+    const selectedDate = ref(new Date());
+    const selectedTime = ref(new Date());
     const selectedElement = ref();
 
     function open() {
@@ -122,6 +135,23 @@
             detail: 'Une erreur est survenue, merci de réessayer.',
             life: 4000
         });
+    }
+
+    function onTimeChange(time) {
+        const hours = time.getHours();
+        const minutes = time.getMinutes();
+        const totalMinutes = hours * 60 + minutes;
+
+        const min = 9 * 60;   // 09:00 = 540 min
+        const max = 19 * 60;  // 19:00 = 1140 min
+
+        if (totalMinutes < min) {
+            // Remettre à l'horaire min
+            selectedTime.value = new Date(new Date(time).setHours(9,0));
+        } else if (totalMinutes > max) {
+            // Remettre à l'horaire max
+            selectedTime.value = new Date(new Date(time).setHours(19,0));
+        }
     }
 
 </script>
