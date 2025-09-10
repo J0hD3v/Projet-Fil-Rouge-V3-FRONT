@@ -57,7 +57,8 @@
 
     const logoClub = {
         alt: "logo du club",
-        src: "../../assets/images/logo.png"
+        // src: "../../assets/images/logo.png"
+        src: "src\assets\images\logo.png"
     }
 
     const title = "Padel Club Pau";
