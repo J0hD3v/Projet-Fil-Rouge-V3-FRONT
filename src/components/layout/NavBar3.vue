@@ -7,7 +7,7 @@
         <template #item="{ item, props, hasSubmenu, root }">
             <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
                 <a v-ripple :href="href" v-bind="props.action" @click="navigate">
-                    <span :class="item.icon" />
+                    <span :class="item.icon" style="font-size: xx-large" />
                     <span>{{ item.label }}</span>
                 </a>
             </router-link>
@@ -71,14 +71,14 @@
         {
             label: 'Accueil',
             icon: 'pi pi-home',
-            url: '/',
+            route: '/',
             head: true,
             // command: () => console.log('lien cliqué')
         },
         {
             label: 'Réservation',
             icon: 'pi pi-calendar',
-            url: '/reservation',
+            route: '/reservation',
             head: true,
             // command: () => console.log('lien cliqué')
         },
@@ -89,19 +89,19 @@
                 {
                     label: 'Programme',
                     // icon: 'pi pi-calendar-clock',
-                    url: '/evenements',
+                    route: '/evenements',
                     // command: () => console.log('lien cliqué')
                 },
                 {
                     label: 'Galerie',
                     // icon: 'pi pi-image',
-                    url: '/galerie',
+                    route: '/galerie',
                     // command: () => console.log('lien cliqué')
                 },
                 {
                     label: 'Point du mois',
                     // icon: 'pi pi-crown',
-                    url: '/concours',
+                    route: '/concours',
                     // command: () => console.log('lien cliqué')
                 }
             ]
@@ -132,7 +132,7 @@
             label: 'Contact',
             icon: 'pi pi-send',
             visible: 'true',
-            url: '/reservation',
+            route: '/reservation',
             head: true,
             // command: () => console.log('lien cliqué')
         }
