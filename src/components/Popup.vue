@@ -70,6 +70,7 @@
         width: 20vw;
         min-width: 250px;
         min-height: 400px;
+        z-index: 999;
     }
     
     @media (max-width: 250px), (max-height: 550px) {
