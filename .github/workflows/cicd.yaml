@@ -9,7 +9,44 @@ on:
   workflow_dispatch:
 
 jobs:
-  # e2e pas encore mis
+  # testing Cypress
+  e2e:
+    runs-on: ubuntu-latest
+    # Service Base de données MySQL
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: TestPassword@1234
+          MYSQL_DATABASE: taskdb
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -prootpw"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+    # Etapes du pipeline
+    steps:
+      # Récupération du code
+      - name: Checkout
+        uses: actions/checkout@v4
+      # configuration de NodeJs
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      # Installer les dépendances NodeJS
+      - name: NodeJS install
+        run: |
+          npm i
+      # Build le code
+      - name: NodeJS install
+        run: |
+          npm run build
+      # Installer et démarrer les tests Cypress
+      - name: Test Cypress
+        uses: cypress-io/github-action@v6
   # Deploiement
   deploy:
     runs-on : ubuntu-latest
