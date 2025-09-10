@@ -1,0 +1,13 @@
+# Vérifie que le module Apache mod_rewrite est activé
+<IfModule mod_rewrite.c>
+    # Activation du rewrite des URL
+    RewriteEngine On
+    RewriteBase /
+
+    # Ne rien faire si la requête est pour un fichier ou un dossier existant
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Sinon, rediriger vers index.html
+    RewriteRule ^(.+)$ index.html [QSA,L]
+</IfModule>
