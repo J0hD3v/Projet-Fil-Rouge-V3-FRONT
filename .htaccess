@@ -1,3 +1,4 @@
+Redirect 302 /test /reservation
 # Vérifie que le module Apache mod_rewrite est activé
 <IfModule mod_rewrite.c>
     # Activation du rewrite des URL
