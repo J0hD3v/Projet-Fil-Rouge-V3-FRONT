@@ -11,7 +11,8 @@ on:
 jobs:
   # testing Cypress
   e2e:
-    runs-on: ubuntu-latest# Etapes du pipeline
+    runs-on: ubuntu-latest
+    # Etapes du pipeline
     steps:
       # Récupération du code
       - name: Checkout
