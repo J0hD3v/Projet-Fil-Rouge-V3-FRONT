@@ -50,7 +50,7 @@ jobs:
   # Deploiement
   deploy:
     runs-on : ubuntu-latest
-    # needs : e2e
+    needs : e2e
     steps:
       # Récupération du code
       - name: Checkout
