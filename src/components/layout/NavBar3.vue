@@ -55,10 +55,12 @@
     import Avatar from 'primevue/avatar';
     import PopupConnection from "@/components/PopupConnection.vue";
 
+    import logo from '@/assets/images/logo.png';
+
     const logoClub = {
         alt: "logo du club",
         // src: "../../assets/images/logo.png"
-        src: "src/assets/images/logo.png"
+        src: logo
     }
 
     const title = "Padel Club Pau";
