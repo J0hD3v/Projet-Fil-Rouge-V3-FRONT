@@ -31,8 +31,21 @@ jobs:
         run: |
           npm run build
       # Installer et démarrer les tests Cypress
+
+      - name: Start the server
+        run: npm run preview &
+        env:
+          NODE_ENV: test
+
+      - name: Wait for server to be ready
+        uses: jakejarvis/wait-for-netlify-action@v1
+        with:
+          url: 'http://localhost:5173'
+          timeout: 60
+
       - name: Test Cypress
         uses: cypress-io/github-action@v6
+
   # Deploiement
   deploy:
     runs-on : ubuntu-latest
