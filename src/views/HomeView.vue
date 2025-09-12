@@ -14,8 +14,8 @@
         
         <TextContainer :content="information" class="m-4" />
 
-        <SpeedDial :model="socialMediasItems" direction="up" :style="{ position: 'fixed', left: '1rem', bottom: '0.75rem' }" :buttonProps="{ severity: '', rounded: true }" :tooltipOptions="{ position: 'right' }" />
-        <SpeedDial :model="speedDialItems" direction="up" :style="{ position: 'fixed', right: '1rem', bottom: '0.75rem' }" :buttonProps="{ severity: 'info', rounded: true }" :tooltipOptions="{ position: 'left' }" />
+        <SpeedDial :model="socialMediasItems" direction="up" :style="{ position: 'fixed', right: '0.5rem', bottom: '0.75rem' }" :buttonProps="{ severity: '', rounded: true }" :tooltipOptions="{ position: 'right' }" />
+        <!-- <SpeedDial :model="speedDialItems" direction="up" :style="{ position: 'fixed', right: '1rem', bottom: '0.75rem' }" :buttonProps="{ severity: 'info', rounded: true }" :tooltipOptions="{ position: 'left' }" /> -->
         
         <Popup :visible="showPopup" @popup-close="showPopup=false" />
         <Toast />
