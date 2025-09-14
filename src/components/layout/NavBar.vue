@@ -2,7 +2,7 @@
 
     <Menubar :model="items" class="sticky-top">
         <template #start>
-            <a class="navbar-brand" href="/"><img :src=logoClub.src :alt=logoClub.alt></a>
+            <a class="navbar-brand" href="/"><img :src=logoClub.src :alt=logoClub.alt style="height: 75px"></a>
         </template>
         <template #item="{ item, props, hasSubmenu, root }">
             <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
