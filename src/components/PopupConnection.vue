@@ -34,8 +34,8 @@
                 </template>
                 <template #footer>
                     <div class="d-flex gap-4 mt-1">
-                        <Button type="reset" label="Annuler" @click="closePopup()" severity="secondary" outlined class="w-full" />
-                        <Button type="submit" form="connectionForm" label="Connexion" @click="" class="w-full" />
+                        <Button type="reset" name="resetConnectionForm" label="Annuler" @click="closePopup()" severity="secondary" outlined class="w-full" />
+                        <Button type="submit" name="submitConnectionForm" form="connectionForm" label="Connexion" @click="" class="w-full" />
                     </div>
                 </template>
             </Card>

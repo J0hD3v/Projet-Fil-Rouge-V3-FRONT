@@ -9,7 +9,7 @@ describe('template spec', () => {
     cy.get('.p-menubar-end > div.d-flex > .d-flex').click();
     cy.get('[name="username"]').type('Test');
     cy.get('[name="password"]').type('1234');
-    cy.get('[type="submit"]').click();
+    cy.get('[name="submitConnectionForm"]').click();
     // Assert
     cy.get('.p-toast-detail').contains(messageOk);
   })
@@ -23,7 +23,7 @@ describe('template spec', () => {
     cy.get('.p-menubar-end > div.d-flex > .d-flex').click();
     cy.get('[name="username"]').type('Test');
     cy.get('[name="password"]').type('1234');
-    cy.get('[type="submit"]').click();
+    cy.get('[name="submitConnectionForm"]').click();
     // Assert
     cy.get('.p-toast-detail').contains(messageBadLogs);
   })
@@ -37,7 +37,7 @@ describe('template spec', () => {
     cy.get('.p-menubar-end > div.d-flex > .d-flex').click();
     cy.get('[name="username"]').type('Test');
     cy.get('[name="password"]').type('1234');
-    cy.get('[type="submit"]').click();
+    cy.get('[name="submitConnectionForm"]').click();
     // Assert
     cy.get('.p-toast-detail').contains(messageServerDown);
   })

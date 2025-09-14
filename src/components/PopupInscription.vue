@@ -19,13 +19,13 @@
                                 <div class="form-group">
                                     <FloatLabel variant="on">
                                         <label for="newUserName">Nom</label>
-                                        <InputText v-model="username" type="text" id="newUserName" name="username" required autocomplete="off" style="color: black;" />
+                                        <InputText v-model="username" type="text" id="newUserName" name="newUsername" required autocomplete="off" style="color: black;" />
                                     </FloatLabel>
                                 </div>
                                 <div class="form-group">
                                     <FloatLabel variant="on">
                                         <label for="newUserPassword">Mot de passe</label>
-                                        <InputText v-model="password" type="password" id="newUserPassword" name="password" required style="color: black;" />
+                                        <InputText v-model="password" type="password" id="newUserPassword" name="newPassword" required style="color: black;" />
                                     </FloatLabel>
                                 </div>
                             </form>
@@ -34,8 +34,8 @@
                 </template>
                 <template #footer>
                     <div class="d-flex gap-4 mt-1">
-                        <Button type="reset" label="Annuler" @click="closePopup()" severity="secondary" outlined class="w-full" />
-                        <Button type="submit" form="inscriptionForm" label="Inscription" @click="" class="w-full" />
+                        <Button type="reset" name="resetInscriptionForm" label="Annuler" @click="closePopup()" severity="secondary" outlined class="w-full" />
+                        <Button type="submit" name="submitInscriptionForm" form="inscriptionForm" label="Inscription" @click="" class="w-full" />
                     </div>
                 </template>
             </Card>
