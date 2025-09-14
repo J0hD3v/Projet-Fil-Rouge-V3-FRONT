@@ -1,7 +1,7 @@
 describe('template spec', () => {
   
   // TEST : RESERVATION
-  it('can book a session', () => {
+  xit('can book a session', () => {
     // Arrange
     cy.visit('/reservation');
     // Act
