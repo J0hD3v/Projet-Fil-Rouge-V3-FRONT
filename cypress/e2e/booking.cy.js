@@ -5,7 +5,8 @@ describe('template spec', () => {
     // Arrange
     cy.visit('/reservation');
     // Act
-    cy.get('[aria-label="Réserver"]').click();
+    // cy.get('[aria-label="Réserver"]').click();   // marche sur les tests en local (npm run test) mais pas dans le workflow github
+    cy.get('.p-button-danger').click();
     cy.get('#pv_id_28').click();
     cy.get('.p-datepicker-hour-picker > .p-datepicker-increment-button').click();
     cy.get('.p-dialog-mask').click();
