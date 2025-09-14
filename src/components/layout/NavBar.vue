@@ -1,117 +1,160 @@
 <template>
 
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
+    <Menubar :model="items" class="sticky-top">
+        <template #start>
             <a class="navbar-brand" href="/"><img :src=logoClub.src :alt=logoClub.alt></a>
-            <h1>{{ title }}</h1>
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-                >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active mx-2 py-2">
-                        <RouterLink to="/" class="text-decoration-none">
-                            Accueil
-                        </RouterLink>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a
-                            class="nav-link dropdown-toggle "
-                            href="#"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                            >
-                            Reservation
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-item">
-                                <RouterLink to="/reservation" class="text-decoration-none">
-                                    Reservation
-                                </RouterLink>
-                            </li>
-                            <li class="dropdown-item">
-                                <RouterLink to="/contact" class="text-decoration-none">
-                                    Contact
-                                </RouterLink>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a
-                            class="nav-link dropdown-toggle"
-                            href="#"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                            >
-                            Evenements
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-item">
-                                <RouterLink to="/tournois" class="text-decoration-none">
-                                    Tournois
-                                </RouterLink>
-                            </li>
-                            <li class="dropdown-item">
-                                <RouterLink to="/concours" class="text-decoration-none">
-                                    Point du mois
-                                </RouterLink>
-                            </li>
-                            <li class="dropdown-item">
-                                <RouterLink to="/galerie" class="text-decoration-none">
-                                    Galerie
-                                </RouterLink>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item mx-2 py-2">
-                        <RouterLink to="/about" class="text-decoration-none">
-                            About
-                        </RouterLink>
-                    </li>
-                    <li class="nav-item mx-2 py-2">
-                        <RouterLink to="/truc" class="text-decoration-none">
-                            Test 404
-                        </RouterLink>
-                    </li>
-                </ul>
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item mx-2 py-2">
-                        <RouterLink to="/connexion" class="text-decoration-none">
-                            Connexion
-                        </RouterLink>
-                    </li>
-                    <li class="nav-item mx-2 py-2">
-                        <RouterLink to="/profil" class="text-decoration-none">
-                            <i class="pi pi-user" style="font-size: 1.5rem; color: red;"></i>
-                        </RouterLink>
-                    </li>
-                </ul>
+        </template>
+        <template #item="{ item, props, hasSubmenu, root }">
+            <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
+                <a v-ripple :href="href" v-bind="props.action" @click="navigate">
+                    <section class="d-flex flex-column align-items-center justify-center">
+                        <span :class="item.icon" style="font-size: xx-large" />
+                        <span>{{ item.label }}</span>
+                    </section>
+                    <span v-if="hasSubmenu" class="pi pi-fw pi-angle-down" />
+                </a>
+            </router-link>
+            <!-- <a v-else v-ripple :href="item.url" :target="item.target" v-bind="props.action">
+                <span :class="item.icon" style="font-size: xx-large" />
+                <span>{{ item.label }}</span>
+                <span v-if="hasSubmenu" class="pi pi-fw pi-angle-down" />
+            </a> -->
+            <a v-else v-ripple :href="item.url" :target="item.target" v-bind="props.action">
+                <section class="d-flex flex-column align-items-center justify-center">
+                    <span :class="item.icon" style="font-size: xx-large" />
+                    <span>{{ item.label }}</span>
+                </section>
+                <span v-if="hasSubmenu" class="pi pi-fw pi-angle-down" />
+            </a>
+        </template>
+        <template #end>
+            <div v-if="connected" class="d-flex align-items-center gap-2">
+                <a v-ripple href="#" @click="navigate" class="d-flex align-items-center justify-center gap-2 rounded">
+                    <span style="color: initial; font-size: 1.25rem;">Coucou</span>
+                    <Avatar image="https://thispersondoesnotexist.com/" shape="circle" size="large" />
+                </a>
+                <a v-ripple href="#" @click="navigate" class="d-flex align-items-center justify-center gap-2 rounded" style="height: -webkit-fill-available">
+                    <span style="color: initial; font-size: 1.25rem;">Déconnexion</span>
+                    <span class="pi pi-sign-out"></span>
+                </a>
             </div>
-        </div>
-    </nav>
+            <div v-else class="d-flex align-items-center gap-2">
+                <a v-ripple href="#" @click="navigate, showPopupConnection=true" class="d-flex align-items-center justify-center gap-2 rounded p-2" style="height: -webkit-fill-available">
+                    <span style="color: initial; font-size: 1.25rem;">Connexion</span>
+                    <span class="pi pi-sign-in" style="color: initial"></span>
+                </a>
+            </div>
+        </template>
+    </Menubar>
+
+    <PopupConnection :visible="showPopupConnection" @popup-close="showPopupConnection=false" @changeToInscription="onChangeToInscription()" />
+    <PopupInscription :visible="showPopupInscription" @popup-close="showPopupInscription=false" @changeToConnection="onChangeToConnection()" />
 
 </template>
 
 <script setup>
 
-    import { RouterLink } from 'vue-router';
+    import { ref } from 'vue';
+    import Menubar from 'primevue/menubar';
+    import Avatar from 'primevue/avatar';
+    import PopupConnection from "@/components/PopupConnection.vue";
+    import PopupInscription from "@/components/PopupInscription.vue";
+
+    import logo from '@/assets/images/logo.png';
 
     const logoClub = {
         alt: "logo du club",
-        src: "/src/assets/images/logo.png"
+        // src: "../../assets/images/logo.png"
+        src: logo
     }
 
     const title = "Padel Club Pau";
+    const connected = false;
+    const showPopupConnection = ref(false);
+    const showPopupInscription = ref(false);
+
+    const items = [
+        {
+            label: 'Accueil',
+            icon: 'pi pi-home',
+            route: '/',
+            head: true,
+            // command: () => console.log('lien cliqué')
+        },
+        {
+            label: 'Réservation',
+            icon: 'pi pi-calendar',
+            route: '/reservation',
+            head: true,
+            // command: () => console.log('lien cliqué')
+        },
+        {
+            label: 'Evènements',
+            icon: 'pi pi-bolt',
+            items: [
+                {
+                    label: 'Programme',
+                    // icon: 'pi pi-calendar-clock',
+                    route: '/evenements',
+                    // command: () => console.log('lien cliqué')
+                },
+                {
+                    label: 'Galerie',
+                    // icon: 'pi pi-image',
+                    route: '/galerie',
+                    // command: () => console.log('lien cliqué')
+                },
+                {
+                    label: 'Point du mois',
+                    // icon: 'pi pi-crown',
+                    route: '/concours',
+                    // command: () => console.log('lien cliqué')
+                }
+            ]
+        },
+        {
+            label: 'Manager',
+            icon: 'pi pi-cog',
+            visible: true,
+            items: [
+                {
+                    label: 'Planning',
+                    // icon: 'pi pi-wrench',
+                    // command: () => console.log('lien cliqué')
+                },
+                {
+                    label: 'Membres',
+                    // icon: 'pi pi-comments',
+                    // command: () => console.log('lien cliqué')
+                },
+                {
+                    label: 'Communication',
+                    // icon: 'pi pi-eye-slash',
+                    // command: () => console.log('lien cliqué')
+                }
+            ]
+        },
+        {
+            label: 'Contact',
+            icon: 'pi pi-send',
+            visible: 'true',
+            route: '/reservation',
+            head: true,
+            // command: () => console.log('lien cliqué')
+        }
+    ];
+
+    function onChangeToConnection() {
+        // open Connection popup
+        showPopupInscription.value = false;
+        showPopupConnection.value = true;
+    }
+
+    function onChangeToInscription() {
+        // open Inscription popup
+        showPopupConnection.value = false;
+        showPopupInscription.value = true;
+    }
 
 </script>
 
@@ -124,114 +167,6 @@
         src: url('../../assets/font/Solix-Light.otf');
     }
 
-    :root {
-        --logoHeight: 50px;
-    }
-
-    nav {
-        position: sticky !important;
-        top: 0;
-        z-index: 999;
-        background-color: var(--vt-c-white-mute);
-
-        & h1 {
-            display: none;
-        }
-
-        & * {
-            color: black;
-        }
-    }
-
-    .nav-item:not(.disabled, .dropdown-toggle, .dropdown) {
-        &::after {
-            display: block;
-            content: '';
-            height: 2px;
-            width: 100%;
-            background-color: blue;
-            opacity: 0;
-        }
-        &:hover::after {
-            transition: all 0.2s;
-            opacity: 1;
-        }
-    }
-
-    .navbar-brand>img {
-        height: var(--logoHeight);
-    }
-
-    /* .router-link-active::after {
-        display: block;
-        content: '';
-        height: 2px;
-        width: 100%;
-        background-color: blue;
-        opacity: 1;
-    } */
-
-    @media (max-width: 992px) {
-
-        .navbar-collapse {
-            position: absolute;
-            top: calc(var(--logoHeight) + 25px);
-            right: 0;
-            padding: 1rem;
-            width: 50vw;
-            background-color: var(--vt-c-black-mute);
-            & li, & a, & li:active, & a:active {
-                color: white !important;
-            }
-        }
-
-        .nav-item:not(.disabled, .dropdown-toggle, .dropdown) {
-            &::after {
-                display: none;
-                content: '';
-                height: 2px;
-                width: 100%;
-                background-color: blue;
-                opacity: 0;
-            }
-            &:hover::after {
-                transition: all 0.2s;
-                opacity: 1;
-            }
-        }
-
-        nav {
-            background-color: var(--vt-c-black-mute);
-            
-            & h1 {
-                display: block;
-                font-family: SolViolette;
-                color: red;
-                font-weight: bold;
-                margin: 0;
-            }
-        }
-        
-        .navbar-toggler {
-            background-color: var(--vt-c-white-mute);
-        }
-
-        .dropdown-menu {
-            background-color: var(--vt-c-black-mute);
-            padding-left: 1rem;
-
-            &>.dropdown-item {
-                background-color: var(--vt-c-black-mute) !important;
-
-                &>a {
-                    display: block;
-                }
-            }
-        }
-
-        .nav-item>a {
-            display: block;
-        }
-    }
+    
 
 </style>

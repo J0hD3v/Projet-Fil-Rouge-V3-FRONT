@@ -7,25 +7,25 @@
                 <!-- <template #header>
                     <img alt="user header" src="../assets/images/background.png" class="w-100 rounded-top" />
                 </template> -->
-                <template #title>Connexion</template>
+                <template #title>Inscription</template>
                 <template #subtitle>
-                    <span>Pas de compte ? </span>
-                    <a @click="changeToInscription()" href="#" class="text-decoration-none">Rejoignez-nous !</a>
+                    <span>Déjà inscrit ? </span>
+                    <a @click="changeToConnection()" href="#" class="text-decoration-none">Connexion</a>
                 </template>
                 <template #content>
                     <section class="d-flex flex-column justify-content-center align-items-center">
                         <div class="form-container">
-                            <form action="" method="post" id="connectionForm" @submit.prevent="connexion()">
+                            <form action="" method="post" id="inscriptionForm" @submit.prevent="connexion()">
                                 <div class="form-group">
                                     <FloatLabel variant="on">
-                                        <label for="name">Nom</label>
-                                        <InputText v-model="username" type="text" id="name" name="username" required autocomplete="off" style="color: black;" />
+                                        <label for="newUserName">Nom</label>
+                                        <InputText v-model="username" type="text" id="newUserName" name="username" required autocomplete="off" style="color: black;" />
                                     </FloatLabel>
                                 </div>
                                 <div class="form-group">
                                     <FloatLabel variant="on">
-                                        <label for="password">Mot de passe</label>
-                                        <InputText v-model="password" type="password" id="password" name="password" required style="color: black;" />
+                                        <label for="newUserPassword">Mot de passe</label>
+                                        <InputText v-model="password" type="password" id="newUserPassword" name="password" required style="color: black;" />
                                     </FloatLabel>
                                 </div>
                             </form>
@@ -35,7 +35,7 @@
                 <template #footer>
                     <div class="d-flex gap-4 mt-1">
                         <Button type="reset" label="Annuler" @click="closePopup()" severity="secondary" outlined class="w-full" />
-                        <Button type="submit" form="connectionForm" label="Connexion" @click="" class="w-full" />
+                        <Button type="submit" form="inscriptionForm" label="Inscription" @click="" class="w-full" />
                     </div>
                 </template>
             </Card>
@@ -49,7 +49,7 @@
 
 <script setup>
 
-    import { ref } from 'vue';
+    import { ref, defineEmits } from 'vue';
     import axios from 'axios';
     import Card from 'primevue/card';
     import InputText from 'primevue/inputtext';
@@ -69,17 +69,17 @@
 
     const emit = defineEmits([
         "popup-close",
-        "changeToInscription"
+        "changeToConnection"
     ]);
 
     function closePopup() {
         resetForm();
         emit('popup-close');
     }
-
-    function changeToInscription() {
+    
+    function changeToConnection() {
         resetForm();
-        emit('changeToInscription');
+        emit('changeToConnection');
     }
 
     function resetForm() {

@@ -27,7 +27,7 @@ const router = createRouter({
     {
       path: '/concours',
       name: 'concours',
-      component: () => import('../views/AboutView.vue'),//ContestView
+      component: () => import('../views/ContestView.vue'),//ContestView
     },
     {
       path: '/galerie',

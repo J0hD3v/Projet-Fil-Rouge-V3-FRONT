@@ -17,10 +17,10 @@
                 <!-- <Button label="Connexion" icon="pi pi-user" as="a" href="/users" /> -->
 
                 <Splitter style="height: 50px" class="mb-2">
-                    <SplitterPanel class="d-flex align-items-center justify-content-center" min-size="50">
+                    <SplitterPanel class="d-flex align-items-center justify-content-center" :min-size="50">
                         <a href="#" class="navBarLink submenu h-100 w-100 d-flex align-items-center justify-content-center"><Avatar image="https://thispersondoesnotexist.com/" class="me-2" size="normal" shape="circle" />Profil</a>
                     </SplitterPanel>
-                    <SplitterPanel class="d-flex align-items-center justify-content-center" min-size="50">
+                    <SplitterPanel class="d-flex align-items-center justify-content-center" :min-size="50">
                         <a href="#" class="navBarLink submenu h-100 w-100 d-flex align-items-center justify-content-center">Déconnexion <span class="menu pi pi-sign-out ms-2" /></a>
                     </SplitterPanel>
                 </Splitter>
@@ -48,7 +48,7 @@
             </div>
         </template>
     </Drawer>
-    <Button icon="pi pi-bars" @click="visible = !visible" />
+    <Button icon="pi pi-bars" @click="visible = !visible" id="openNavbarButton" />
 
 </template>
 
@@ -162,6 +162,14 @@
     
     .submenu {
         font-size: 1.1rem;
+    }
+
+    #openNavbarButton {
+        position: fixed !important;
+        right: 0;
+        top: 0;
+        height: 3rem;
+        width: 3rem;
     }
 
 </style>

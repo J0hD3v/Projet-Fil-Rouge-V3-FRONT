@@ -37,7 +37,9 @@
 
     @media (max-width: 992px) {
         header {
-            display: none;
+            /* display: none; */
+            padding: 0.5rem 0;
+            height: 3rem;
         }
     }
 
