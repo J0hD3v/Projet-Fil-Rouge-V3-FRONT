@@ -3,7 +3,7 @@
         <!-- <h1 class="m-4">Home View</h1> -->
 
         <section class="backgroundImage">
-            <Button label="Réserver un terrain" icon="pi pi-calendar" as="a" href="/reservation" raised class="shadowed p-3" />
+            <Button label="Réserver un terrain" icon="pi pi-calendar" @click="visible = true;" raised class="shadowed p-3" />
         </section>
 
         <!-- <Carousel :content="products" :circular="true" :showIndicators="true" :showNavigators="true"/> -->
@@ -18,6 +18,7 @@
         <!-- <SpeedDial :model="speedDialItems" direction="up" :style="{ position: 'fixed', right: '1rem', bottom: '0.75rem' }" :buttonProps="{ severity: 'info', rounded: true }" :tooltipOptions="{ position: 'left' }" /> -->
         
         <Popup :visible="showPopup" @popup-close="showPopup=false" />
+        <PopupBottom :formFields="formFields" v-model:visible="visible" title="Réservation" />
         <Toast />
 
     </div>
@@ -32,6 +33,7 @@ import TextContainer from "@/components/TextContainer.vue";
 import Popup from "@/components/Popup.vue";
 import Button from "primevue/button";
 import { SpeedDial } from "primevue";
+import PopupBottom from '@/components/PopupBottom.vue';
 
 onMounted(() => {
     ProductService.getProductsSmall().then(
@@ -54,6 +56,54 @@ onMounted(() => {
         }
     ]
 })
+
+const visible = ref(false);
+
+const formFields = [
+    {
+        title: "Date",
+        type: "date",
+        options: {
+            dateOptions: {
+                min: new Date(),
+                max: null
+            }
+        }
+    },
+    {
+        title: "Heure",
+        type: "time",
+        options: {
+            dateOptions: {
+                stepMinute: 15,
+                min: 8,
+                max: 19
+            }
+        }
+    },
+    {
+        title: "Durée",
+        type: "duration",
+        options: {
+            durationOptions: ["1h", "1h30", "2h"]
+        }
+    },
+    {
+        title: "Nombre de personnes",
+        type: "number",
+        options: {
+            numberOptions: {
+                step: 2,
+                min: 2,
+                max: 4
+            }
+        }
+    },
+    {
+        title: "Location matériel",
+        type: "checkbox"
+    }
+];
 
 const speedDialItems = ref([
     {

@@ -2,7 +2,8 @@
 
     <Toast  />
 
-    <PopupBottom :formFields="formFields" title="Inscription" buttonLabel="S'inscrire" buttonIcon="pi pi-sign-in" buttonClass="largeButton" @dateChange="handleDateChange" />
+    <Button label="S'inscrire" icon="pi pi-sign-in" @click="visible = true;" severity="danger" class="largeButton" />
+    <PopupBottom :formFields="formFields" v-model:visible="visible" title="Inscription" @dateChange="handleDateChange" />
     
     <div class="calendarContainer">
         <ScheduleXCalendar :calendar-app="calendarApp" />
@@ -13,6 +14,7 @@
 <script setup>
 
     import { ref } from 'vue';
+    import { Button } from 'primevue';
     import PopupBottom from '@/components/PopupBottom.vue';
     import { ScheduleXCalendar } from '@schedule-x/vue';
     import {
@@ -27,6 +29,7 @@
     import { createEventModalPlugin } from '@schedule-x/event-modal';
 
     const buttonClick = ref(false);
+    const visible = ref(false);
 
     const formFields = [
         {
@@ -176,6 +179,10 @@
     .calendarContainer {
         /* zoom casse les modales d'evenements */
         /* zoom: 0.7; */
+    }
+
+    .largeButton {
+        width: 100%;
     }
 
 </style>
